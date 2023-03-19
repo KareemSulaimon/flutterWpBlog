@@ -47,7 +47,7 @@ defineProps<{
     border: 1px solid #F5F5F5;
     align-items: flex-start;
     border-radius: 5px;
-    gap: 1rem;
+    gap: 15px;
     
 
 
@@ -68,18 +68,19 @@ defineProps<{
         display: flex;
         flex-direction: column;
         width: 100%;
-        gap: 15px;
+        gap: 10px;
        
 
         .card_frame--3 {
-            width: 60%;
+           gap: 20px;
+    
         }
 
         .card_frame--4 {
             display: flex;
             flex-direction: column;
             width: 100%;
-            gap: 16px;
+            gap: 5px;
            
         
             h5 {
@@ -88,7 +89,6 @@ defineProps<{
           
 
             p { 
-            font-family: myFont;
             font-size: 14px;
             font-weight: 400;
            color:  #6E6E6E;
@@ -113,10 +113,10 @@ defineProps<{
         }
 
         .buttonRead {
-            width: 70px;
+            width: 80px;
             color: #1473E6;
             font-family: SF Pro Text;
-            font-size: 10px;
+            font-size: 12px;
             font-weight: 700;
 
     
@@ -128,12 +128,6 @@ defineProps<{
 
 @media (min-width: 640px) {
     .card {
-     
-    .card_frame {
-        .card_frame--3 {
-            width: 45%;
-        }
-
     .card_frame--4 {
          
             h5 {
@@ -152,22 +146,9 @@ defineProps<{
             font-size: 12px;
         }
 
-        .buttonRead {
-            width: 90px;
-            font-size: 12px;
-        }
+       
     }
     }
-}
 
-@media (min-width: 440px) {
-    .card {
-     
-     .card_frame {
-         .card_frame--3 {
-             width: 50%;
-         }
-        }
-    }
-}
+
 </style>

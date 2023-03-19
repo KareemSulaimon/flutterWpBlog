@@ -10,7 +10,7 @@ const {data: posts} = await useWpApi().getPosts<any>()
 
       <page-header />
 
-        <div class="cards">
+     <div class="cards">
         <card-media
         v-for="post in posts"
         :key="post.id"
@@ -19,42 +19,20 @@ const {data: posts} = await useWpApi().getPosts<any>()
         :excerpt="post.excerpt.rendered"
         :slug="post.slug"
         :date-posted="post.date"
-         class="card_detail" 
         />
- 
-<!-- page footer from component --> 
-
 </div>
+
 <page-footer />
 
-<!--  payment link -->
+
 
 <flutter />
 
 </main>
 </template>
 
-<style lang="scss" scoped >
-.cards {
-       display: grid;
-       grid-template-columns: repeat(1, minmax(0, 1fr));
-       gap: 1rem;   
-}
+<style lang="scss">
 
-
-@media (min-width: 640px) {
-    .cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-
-@media (min-width: 1280px) {
-    .cards {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-       
-    }
-}
 
 
 </style>

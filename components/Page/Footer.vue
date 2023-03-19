@@ -11,10 +11,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
   margin-top: 100px;
   margin-bottom: 2rem;
-  gap: .5rem;
+  gap: 8px;
 
   h5 {
   font-family: SF Pro Display;
