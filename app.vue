@@ -23,14 +23,6 @@
     align-items: center;
 }
 
-// @font-face {
-//     font-family: myFirstFont;
-//     src: url(~/assets/font/sf-pro-text/regular.otf);
-// }
-
-// * p {
-//   font-family: myFirstFont;
-// }
 
 
 * {
