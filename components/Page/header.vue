@@ -1,27 +1,35 @@
 <template>
   <main id="header" >
    <section class="header_logo">
-    <NuxtLink to="/" >
-      <img src="@/assets/images/dasdas.svg" alt="" class="logo">
-    </NuxtLink>
+      <NuxtLink to="/" >
+        <img src="@/assets/images/dasdas.svg" alt="" class="logo">
+      </NuxtLink>
    </section>
+
    <section class="header_frame-14">
-    <NuxtLink to="https://twitter.com/Sulaimon_KO" >
-      <img src="@/assets/images/twitter.svg" alt="twitter icon">
-    </NuxtLink>
-          <span>.</span>
-          <NuxtLink to="/" >
-      <img src="@/assets/images/dribble.svg" alt="dribble icon">
-     </NuxtLink>
-      <span>.</span>
-    <NuxtLink to="/">
-      <img src="@/assets/images/figma.svg" alt="figma icon">
-    </NuxtLink>
-      <span>.</span>
-    <NuxtLink to="https://github.com/KareemSulaimon">
-      <img src="@/assets/images/git.svg" alt="git icon">
-    </NuxtLink>
-  </section>
+      <NuxtLink to="https://twitter.com/Sulaimon_KO" >
+        <img src="@/assets/images/twitter.svg" alt="twitter icon">
+      </NuxtLink>
+
+            <span>.</span>
+
+            <NuxtLink to="/" >
+        <img src="@/assets/images/dribble.svg" alt="dribble icon">
+      </NuxtLink>
+
+        <span>.</span>
+
+      <NuxtLink to="/">
+        <img src="@/assets/images/figma.svg" alt="figma icon">
+      </NuxtLink>
+
+        <span>.</span>
+
+      <NuxtLink to="https://github.com/KareemSulaimon">
+        <img src="@/assets/images/git.svg" alt="git icon">
+      </NuxtLink>
+
+   </section>
 </main>
 </template>
 
@@ -51,8 +59,7 @@
   display: flex;
   justify-content: space-between;
   width: 90px;
-  // background: red;
-
+ 
   img {
     width: 12px;
   }

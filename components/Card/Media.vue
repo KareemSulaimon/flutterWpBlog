@@ -5,6 +5,7 @@ defineProps<{
     excerpt: string
     datePosted: string
     slug: string
+    category?: string
 }>()
 </script>
 
@@ -16,7 +17,7 @@ defineProps<{
     
     <section class="card_frame">
         <span class="card_frame--3 frame--3">
-            <h5>Front-end </h5>
+            <h5>{{category}} </h5>
             <small>. {{ datePosted.slice(0,10)}}</small>
         </span>
 
@@ -47,7 +48,7 @@ defineProps<{
     border: 1px solid #F5F5F5;
     align-items: flex-start;
     border-radius: 5px;
-    gap: 15px;
+  
     
 
 
@@ -55,6 +56,8 @@ defineProps<{
         width: 100%;
         height: 200px;
         position: relative;
+        margin-bottom: 15px;
+
         img {
             position: absolute;
             object-fit: cover;
@@ -68,34 +71,8 @@ defineProps<{
         display: flex;
         flex-direction: column;
         width: 100%;
-        gap: 10px;
+        margin-bottom: 10px;
        
-
-        .card_frame--3 {
-           gap: 20px;
-    
-        }
-
-        .card_frame--4 {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            gap: 5px;
-           
-        
-            h5 {
-                font-size: 16px;
-            }
-          
-
-            p { 
-            font-size: 14px;
-            font-weight: 400;
-           color:  #6E6E6E;
-            }
-           
-        }
-
     }
 
     .card_readBtnContent {
@@ -106,7 +83,7 @@ defineProps<{
 
         small {
             color: #6E6E6E;
-            font-family: SF Pro Text;
+             font-family: 'fontLight', sans-serif;
             font-size: 10px;
             font-weight: 500;
             width: max-content;
@@ -115,7 +92,7 @@ defineProps<{
         .buttonRead {
             width: 80px;
             color: #1473E6;
-            font-family: SF Pro Text;
+             font-family: 'fontLight', sans-serif;
             font-size: 12px;
             font-weight: 700;
 
@@ -123,7 +100,6 @@ defineProps<{
         }
     }
 }
-
 
 
 @media (min-width: 640px) {

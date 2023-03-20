@@ -20,19 +20,12 @@ const {data: posts} = await useWpApi().getPosts<any>()
         :slug="post.slug"
         :date-posted="post.date"
         />
-</div>
+     </div>
 
 <page-footer />
-
-
 
 <flutter />
 
 </main>
 </template>
 
-<style lang="scss">
-
-
-
-</style>

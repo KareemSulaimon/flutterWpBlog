@@ -52,14 +52,40 @@ grid-template-columns: repeat(1, minmax(0, 1fr));
            
             small {
                 color: #6E6E6E;
+                margin-left: 15px;
+                font-family: 'fontLight', sans-serif;
                
             }
 
             h5 {
                 color: #4B4B4B;
+                font-family: 'fontLight', sans-serif;
               
             }
  }
+
+ .card_frame--4, .frame-9 {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+           
+           
+        
+            h5 {
+                font-size: 16px;
+                margin:  5px 0;
+                font-family: 'fontLight', sans-serif;
+            }
+          
+
+            p { 
+            font-size: 14px;
+            font-weight: 400;
+           color:  #6E6E6E;
+            font-family: 'fontLight', sans-serif;
+            }
+           
+        }
 
 
   .all {
@@ -110,6 +136,15 @@ grid-template-columns: repeat(1, minmax(0, 1fr));
     }
 }
 
-        
-       
+        // fonts
+@font-face {
+    font-family: 'fontLight';
+    src: url('@/assets/fonts/SF-Pro-Text-Light.otf') format('truetype');
+} 
+
+@font-face {
+    font-family: 'fontDisplayBold';
+    src: url('@/assets/fonts/SFPRODISPLAYREGULAR.OTF') format('truetype');
+} 
+
 </style>

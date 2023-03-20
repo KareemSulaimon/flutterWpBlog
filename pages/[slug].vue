@@ -1,17 +1,25 @@
 <script lang="ts" setup>
- import useWpApi from '~~/composables/useWpApi';
+//  import from useWpApi composables ';
+
+  import useWpApi from '~~/composables/useWpApi';
 
   const {params} = useRoute();
 
+//  using  useWpetApi to get each post
   const {data: posts} = await useWpApi().getPost<any>(params.slug as  string);
+
+  //  using  useWpetApi to get all posts
 
   const {data: morePosts} = await useWpApi().getPosts<any>(); 
 
   const post = posts.value[0];
 
   const selectedParagraph = ref<string>('');
-
+  
   const paragraphs = ref<string[]>([]);
+
+//   using DOM to parse DOM and get to manipulate it value,get the excess of all 
+// this code is to firstParagraph and display them only when needed
 
   const parser = new DOMParser(); 
 
@@ -19,47 +27,49 @@
 
   const firstParagraph = parsedHtml.getElementById('speakable-summary');
 
-  console.log(firstParagraph);
-  
-  
   const allParagraph =  parsedHtml.querySelectorAll('p');
 
   const arrayParagraph = Array.from(allParagraph);
-
-
+  
   const filteredParagraph = arrayParagraph.filter(p => p.id !== "speakable-summary");
-
+   
+  selectedParagraph.value = firstParagraph ? firstParagraph.innerText :"no paragraph"
 
   paragraphs.value = filteredParagraph.map(p => p.innerText)
-  
-  let secondParagraph : string | null = null;
 
-    if(allParagraph.length > 1) {
-      secondParagraph = allParagraph[1].textContent
-    }
+//   const secondParagraph = arrayParagraph[1]
 
-     let advert = "To get a roundup of TechCrunch's biggest and most important stories delivered to your inbox every day at 3 p.m. PDT, subscribe here."
-    if(firstParagraph?.innerText == advert)  {
-        selectedParagraph.value = secondParagraph ? secondParagraph : 'No paragraph found';
-    }
-    else {
-        selectedParagraph.value = firstParagraph ? firstParagraph.innerText : 'No paragraph found';
-    }
-  
+//   const firstParagraphLink = firstParagraph?.querySelectorAll('a');
 
-    // const paragraphLinks = parsedHtml.querySelectorAll('p > a:first-child')
-    //   if (paragraphLinks.length >= 2) {
-    //     const secondParagraphLink = paragraphLinks[1].parentNode
-    //     const childElement = secondParagraphLink.querySelector('a')
-    //     if (childElement && childElement.href === 'https://xyz.com') {
-    //       const childValue = childElement.textContent.trim()
-    //       console.log('Child value of second paragraph with a link to "https://xyz.com":', childValue)
-    //     } else {
-    //       console.log('No child link element in the second paragraph with a link to "https://xyz.com".')
-    //     }
-    //   }
+//  const filteredLinks = ref<string[]>([])
+
+//  firstParagraphLink?.forEach(link => {
+
+//     if(link.href.includes('https://techcrunch.com/newsletters')) {
+
+//         filteredLinks.value.push(link.href)
+    
+//     } 
+// });
+
+// if (filteredLinks.value.length >= 1) {
+
+//     selectedParagraph.value = secondParagraph ? secondParagraph.innerText :"no paragraph"
+
+//     const filteredParagraph = arrayParagraph.filter((_, index) => index !== 1);
+
+//      paragraphs.value = filteredParagraph.map(p => p.innerText);
+     
+// }else {      
+//          selectedParagraph.value = firstParagraph ? firstParagraph.innerText :"no paragraph"
+//     }
+
+
  
-   
+
+
+
+
 
 </script>
 
@@ -74,7 +84,7 @@
                 <small>{{ post.date.slice(0,10) }}</small>
         </span>
 
-        <div class="frame-9">
+        <div class="detail_frame-9 frame-9">
          <h5>{{ post.title.rendered }} </h5>
          <div class="detail_frame-9_paragraph paragraph ">
             <div>
@@ -88,7 +98,7 @@
    </div>
       
         
-    <div class="paragraph" v-for="(paragraph, index) in paragraphs" :key="index" > 
+    <div class="detail_paragraph paragraph " v-for="(paragraph, index) in paragraphs" :key="index" > 
       {{ paragraph}}
         </div>
 
@@ -99,6 +109,7 @@
     <h5 class="detail_article">More Articles</h5>
 
     <div class="cards">
+
      <card-media
         v-for="post in morePosts"
         :key="post.id"
@@ -107,6 +118,7 @@
         :excerpt="post.excerpt.rendered"
         :slug="post.slug"
         :date-posted="post.date"
+        :category="post.category"
         class="card_detail"
         />
                
@@ -124,18 +136,17 @@
     width: 85%;
     align-items: flex-start;
 
-    .detail_frame_3 {
-       gap: 10px;
-    }
+   
       
     .paragraph {
         display: flex;
         flex-flow: column;
         color: #6E6E6E;
         font-weight: 400;
-        gap: 10px;
+        margin-bottom: 10px;
         font-size: 15px;
         width: 100%;
+        font-family: 'fontLight', sans-serif;
 
        * img {
         width: 80%;
@@ -151,25 +162,21 @@
             display: flex;
            flex-direction: column;
             width: 100%;
-
+           
         }
      }
 
        
 
     .frame-9 {
-        display: flex;
-          gap: 10px;
-          flex-flow: column;
-
-
+      
         h5 {
-        font-family: SF Pro Display;
+        font-family: 'fontDisplayBold', sans-serif;
         font-size: 30px;
         font-weight: 900;
         color:  #2C2C2C;
-        margin-top: 5px;
-
+        font-style: normal;
+       
         }
 
        
@@ -191,7 +198,7 @@
    
 .detail_article {
     width: 100%;
-    font-family: SF Pro Display;
+    font-family: 'fontDisplayBold', sans-serif;
     font-size: 20px;
     font-weight: 900;
     margin-top: 5rem;
@@ -201,16 +208,16 @@
 }
 
 .cards {
-    height: 550px;
-   overflow: hidden;
+    height: 550px * 3;
+    overflow: hidden;
    
     .card_detail {
         height: 550px;
         
         
     }
-}
 
+}
 
 @media (min-width: 640px) {
    
@@ -240,49 +247,26 @@
 
 .detail_article {
         font-size: 24px;
-      
-
     }
 
-    .cardWrapper {
-   display: flex;
-    height: 550px;
-    flex-wrap: wrap;
-    overflow: hidden;
+    .cards {
+    height: 550px * 2;
    
-    .card_detail{
-        height: 100%;
-        width: 32%;
-        gap: 1.25rem;
+    .card_detail {
+        height: 550px;
+        
         
     }
 }
 }
 
-// @media (min-width: 1024px) {
-//     .detail {
-//     width: 70%;
-  
-//     .paragraph {
-//         font-size: 16px;
-
-//        * img {
-//         width: 70%;
-//        }
-//      }
-       
-//     .frame-9 {
-//         h5 {
-//         font-size: 35px;
-//         } 
-//     }
-//     .detail_image  {
-//         width: 80%;
-       
-//      }
+@media (min-width: 1024px) {
+ .cards {
+    height: 550px;
    
-
-// }
-// }
-
+    .card_detail {
+        height: 550px;
+    
+    } }
+}
 </style>
